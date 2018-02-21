@@ -20,8 +20,9 @@ class Client(object):
     def __init__(self, api_key, api_secret):
         self.ACCESS_KEY = api_key
         self.SECRET_KEY = api_secret
-        accounts = self.get_accounts()
-        self.ACCOUNT_ID = accounts['data'][0]['id']
+        if(api_key != ''):
+            accounts = self.get_accounts()
+            self.ACCOUNT_ID = accounts['data'][0]['id']
 
     def _http_get_request(self, url, params, add_to_headers=None):
         headers = {
